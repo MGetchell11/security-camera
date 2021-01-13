@@ -1,8 +1,6 @@
 import cv2
-import numpy as np
 import os
 from datetime import datetime
-import time
 
 # Load the cascade
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -10,10 +8,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 # To capture video from webcam.
 cap = cv2.VideoCapture(0)
 i = 0
-while(cap.isOpened()):
-    # Directory to save image captures
-    directory = '~/home/matt/security'
-
+while cap.isOpened():
     # Today's date for naming convention of saved pictures
     now = datetime.now()
     dt_string = now.strftime("%m-%d-%y_%H:%M:%S")
@@ -40,8 +35,6 @@ while(cap.isOpened()):
                 os.chdir(path)
                 cv2.imwrite(dt_string + '.tiff', img)
 
-
-
         # Display
         cv2.imshow('Security Cam 1', img)
         break
@@ -54,3 +47,6 @@ while(cap.isOpened()):
 
 # Release the VideoCapture object
 cap.release()
+
+
+
